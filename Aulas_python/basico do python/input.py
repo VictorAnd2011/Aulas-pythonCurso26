@@ -1,5 +1,6 @@
 nome = input('qual o seu nome felas?\n')
 print(f'seu nome é {nome} felas')
+print(nome)
 
 #o input sempre recebe dados como string
 #logo, tentar fazer contas com esses dados dará erro

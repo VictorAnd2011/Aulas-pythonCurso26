@@ -34,3 +34,11 @@ elif pre == "42": #diminui para um código só, ao inves de else e dps if
 
 else:
     print("vc não me respondeu felas")
+
+
+
+#é possivel fazer um if em uma linha só
+condicao = input("Verdadeiro ou falso?[V ou F]").upper()
+condicao = condicao == 'V'
+variavel = 'Valor' if condicao else 'Outro valor'
+print(variavel)

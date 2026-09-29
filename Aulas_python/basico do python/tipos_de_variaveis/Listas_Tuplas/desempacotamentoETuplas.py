@@ -31,3 +31,6 @@ print(nome3)  # José
 tupla = 1, 2, 3, 4, 5
 #Tuplas não aceitam métodos de adição ou remoção de elementos, mas aceitam métodos de contagem e indexação.
 #O desempacotamento de tuplas funciona da mesma forma que o desempacotamento de listas.
+
+#é possivel desempacotar uma lista dentro de uma função
+print(*nomes)

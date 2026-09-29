@@ -91,6 +91,9 @@ for indice in indices:
     print(f'Índice: {indice}, Elemento: {lista1[indice]}')
 
 
+
+
+
 '''
 resumindo tudo: 
 - Listas são mutáveis
