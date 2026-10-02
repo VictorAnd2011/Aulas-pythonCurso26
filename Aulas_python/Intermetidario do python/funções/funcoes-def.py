@@ -47,3 +47,43 @@ funcao3(2,1) #x recebe 2, e y recebe 1
 funcao3(y=2, x=1)
 #porém, apartir de quando tu fazer um argumento nomeado, todos os que vierem dps tem q ser nomeados também
 # funcao3(y=2, 1) dá errado pois o y que veio antes foi nomeado
+
+
+#as funções tem escopos, ou seja, variáveis criadas dentro de uma função não podem ser 
+#acessadas fora dela
+
+def escopo():
+    A = 1
+    print(A)
+
+escopo() #aqui funciona, pois a função foi chamada
+# print(A) aqui não funciona, pois a variável A foi criada dentro da função
+
+#caso eu crie uma variável fora da função, ela pode ser acessada dentro dela
+B = 2  
+def escopo2():
+    print(B)
+
+escopo2() #aqui funciona, pois a variável B foi criada fora da função, então ela pode ser acessada dentro dela
+
+#Caso eu queria q uma variavavel de dentro da função seja acessada fora dela,
+#eu posso usar a palavra global
+def escopo_global():
+    global C
+    C = 3
+    print(C)
+escopo_global() #aqui funciona, pois a função foi chamada
+print(C) #aqui funciona, pois a variável C foi criada dentro da função, mas
+
+
+
+#também é possível criar funções dentro de funções, e essas funções internas 
+# só podem ser acessadas dentro da função que as criou
+def escopo3():
+    def escopo_de_dentro():
+        print('Função interna')
+    escopo_de_dentro() #aqui funciona, pois a função foi chamada dentro da função que a criou
+
+escopo3() #aqui funciona, pois a função foi chamada
+
+#escopo_de_dentro() #aqui não funciona, pois a função foi criada dentro de outra função, e não pode ser acessada fora dela
