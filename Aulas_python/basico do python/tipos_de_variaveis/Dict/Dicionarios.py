@@ -45,3 +45,32 @@ print(pessoa)
 print(pessoa.get('altura')) #retorna None, pois o indice 'altura' não
 print(pessoa.get('nome')) #retorna 'Sabor', pois o indice 'nome' existe
 print(pessoa.get('altura', 'indice não existe')) #retorna oq eu escolhi
+
+
+# Métodos úteis dos dicionários em Python
+# len - quantas chaves
+# keys - iterável com as chaves
+# values - iterável com os valores
+# items - iterável com chaves e valores
+# setdefault - adiciona valor se a chave não existe
+# copy - retorna uma cópia rasa (shallow copy)
+# get - obtém uma chave
+# pop - Apaga um item com a chave especificada (del)
+# popitem - Apaga o último item adicionado
+# update - Atualiza um dicionário com outro
+len(pessoa) #quantas chaves tem no dicionario pessoa
+keys = pessoa.keys() #retorna um iterável com as chaves do dicionario pessoa
+values = pessoa.values() #retorna um iterável com os valores do dicionario pessoa
+items = pessoa.items() #retorna um iterável com chaves e valores do dicionario pessoa
+setdefault = pessoa.setdefault('peso', 70) #adiciona o valor 70 se a chave 'peso' não existe
+copy = pessoa.copy() #retorna uma cópia rasa (shallow copy) do dicionario pessoa
+get = pessoa.get('nome') #obtém o valor da chave 'nome' do dicionario pessoa
+pop = pessoa.pop('peso') #apaga o item com a chave 'peso' do dicionario pessoa
+popitem = pessoa.popitem() #apaga o último item adicionado do dicionario pessoa
+update = pessoa.update({'peso': 70}) #atualiza o dicionario pessoa
+
+#update funciona de várias formas:
+pessoa.update({'peso': 70}) 
+pessoa.update(peso=70) 
+tupla = ('peso', 70)
+pessoa.update([tupla])
