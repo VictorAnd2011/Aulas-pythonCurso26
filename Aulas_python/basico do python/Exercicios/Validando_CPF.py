@@ -3,7 +3,6 @@ while continuar == 's':
     cpf = input("Digite seu CPF: ")
     digitos = []
     
-
     for digito in cpf:
         if digito.isdigit():    
             digitos.append(digito)

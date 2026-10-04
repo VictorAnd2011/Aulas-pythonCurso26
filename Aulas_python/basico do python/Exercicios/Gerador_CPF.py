@@ -3,6 +3,7 @@ import random
 digitos = []
 for n in range(9):
     digitos += str(random.randint(0,9))
+print(digitos)
 
 soma = 0
 for n in range(9):

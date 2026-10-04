@@ -81,7 +81,7 @@ for i in range(1000000):
 print("Mudando a escolha para o outro tivemos:")
 print(f"F: {f3 / 10000:.2f}%")
 print(f"C: {c3 / 10000:.2f}%")
-
+input()
 '''
 Explicação do problema das 3 portas:
 na primeira simulação, o jogador escolhe uma porta e mantém a escolha, então a chance de ganhar é de 1/3
