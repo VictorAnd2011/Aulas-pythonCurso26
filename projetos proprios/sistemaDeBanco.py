@@ -3,9 +3,10 @@ print('====== BANCO ======')
 input('Presione enter para começar... ')
 print()
 
-database = [{'saldo':67.50,'cpf_salvo':'50043685897','senha_salva':'Victor123@'}]
+database = [{'saldo':67.50,'cpf_salvo':'1','senha_salva':'a','nome_salvo':'Victor'},
+            {'saldo':42.67,'cpf_salvo':'2','senha_salva':'a','nome_salvo':'Maria'}]
 
-opcoes_registro = ('Criar conta','Entrar na conta')
+opcoes_registro = ('Criar conta','Entrar na conta','Sair')
 
 opcoes = ('Consultar saldo','Depositar','Sacar','Transferir','Sair')
 
@@ -137,45 +138,103 @@ def login():
             
 def consultar_saldo():
     os.system('cls')
-    saldo = f'\nSeu saldo é de: {database[indice_user]['saldo']}R$\n'
+    saldo = f'\nSeu saldo é de: {database_user['saldo']:.2f}R$\n'
     return saldo
 
 def depositar():
     os.system('cls')
-    deposito = float(input('Quanto deseja depositar: '))
-    database[indice_user]['saldo'] = database[indice_user]['saldo'] + deposito
-    deposito = f'\nForam depositados {deposito:.2f}R$, totalizando {database[indice_user]['saldo']:.2f}R$\n'
-    return deposito
+    while True:
+        try:
+            deposito = round(float(input('Quanto deseja depositar: ')),2)
+            database_user['saldo'] += deposito
+            deposito = f'\nForam depositados {deposito:.2f}R$, totalizando {database_user['saldo']:.2f}R$\n'
+            return deposito
+        except ValueError:
+            os.system('cls')
+            print('---NÚMERO INVÁLIDO---\n')
+
+
+
+def sacar():
+    os.system('cls')
+    while True:
+        try:
+            saque = round(float(input(f'Quanto deseja sacar? Saldo disponivél: {database_user['saldo']:.2f}R$ ')),2)
+        
+            if database_user['saldo'] >= saque:
+                database_user['saldo'] -= saque
+                saque = f'\nForam sacados {saque:.2f}R$, finalizando com {database_user['saldo']:.2f}R$\n'
+                return saque
+            else:
+                os.system('cls')
+                print('---SALDO INSUFICIENTE---\n')
+        except ValueError:
+            os.system('cls')
+            print('---NÚMERO INVÁLIDO---\n')
+
+
+
+def tranferir():
+    os.system('cls')
+    while True:
+        conta = input('Para que CPF deseja tranferir o dinheiro: ')
+        for indice, _ in enumerate(database):
+            if conta == database[indice]['cpf_salvo']:
+                while True:
+                    try:
+                        tranferencia = round(float(input(f'Quanto deseja transferir? Saldo disponível: {database_user['saldo']:.2f} ')),2)
+                        if tranferencia <= database_user['saldo']:
+                            database_user['saldo'] -= tranferencia
+                            database[indice]['saldo'] += tranferencia
+                            os.system('cls')
+                            tranferencia = f'\nForam transferidos {tranferencia:.2f}R$ para o(a) {database[indice]['nome_salvo']}\n'
+                            return tranferencia
+                        else:
+                            os.system('cls')
+                            print('---SALDO INSUFICIENTE---\n')
+                    except ValueError:
+                        os.system('cls')
+                        print('---NÚMERO INVÁLIDO---\n')
+        
+        os.system('cls')
+        print('\n---CONTA INESISTENTE NO SISTEMA---\n')
+
 
 
 def pedindo_opcoes(opcoes):
     global opcoes_registro_funcao, opcoes_funcao
-    opcoes_registro_funcao = (criar_conta,login)
-    opcoes_funcao = (consultar_saldo,depositar,)
+    opcoes_registro_funcao = (criar_conta, login)
+    opcoes_funcao = (consultar_saldo, depositar,sacar,tranferir)
     for indice, opcao in enumerate(opcoes):
         print(f'{indice+1}) {opcao}')
     escolha = int(input('Qual das opções deseja realizar? '))
     return escolha-1
 
+escolha_registro = 0
+while escolha_registro != 2:
+    logado = False
+    while logado == False:
+        escolha_registro = pedindo_opcoes(opcoes_registro)
+        if escolha_registro == 2:
+            break
+        try:
+            user_logado = opcoes_registro_funcao[escolha_registro]()
+            logado, indice_user = user_logado
+        except IndexError:
+            os.system('cls')
+            print('\n---OPÇÃO INDISPONÍVEL---\n')
+        
+    else:
+        database_user = database[indice_user]
 
-
-logado = False
-while logado == False:
-    escolha_registro = pedindo_opcoes(opcoes_registro)
-    user_logado = opcoes_registro_funcao[escolha_registro]()
-    logado, indice_user = user_logado
-
-while True:
-    escolha = pedindo_opcoes(opcoes)
-    print(opcoes_funcao[escolha]())
-
-
-
-
-
-
-
-
-
-
-
+        while True:
+            try:
+                escolha = pedindo_opcoes(opcoes)
+                if escolha == 4:
+                    os.system('cls')
+                    break
+            
+                print(opcoes_funcao[escolha]())
+            except IndexError:
+                os.system('cls')
+                print('---OPCÃO INDISPONÍVEL---\n')
