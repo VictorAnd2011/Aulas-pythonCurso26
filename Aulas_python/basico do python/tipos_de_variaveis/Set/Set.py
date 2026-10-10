@@ -30,7 +30,7 @@ print(f'{s1=}')
 s1.add(3) #só adiciona 1 por vez
 print(f'{s1=}')
 
-s1.update('Hello World', 1, 2, 3, 67) #caso eu passe apenas a str, ele vai iterar ela, como no caso tem uma tupla, não acontece isso
+s1.update(('Hello World', 1, 2, 3, 67)) #caso eu passe apenas a str, ele vai iterar ela, como no caso tem uma tupla, não acontece isso
 print(f'{s1=}')
 
 s1.discard('Hello World') #para remover, como cada valor só tem 1 dele, dá pra fazer isso
@@ -40,3 +40,21 @@ s1.discard('Hello World') #para remover, como cada valor só tem 1 dele, dá pra
 # intersecção & (intersection) - Itens presentes em ambos
 # diferença - Itens presentes apenas no set da esquerda
 # diferença simétrica ^ - Itens que não estão em ambos
+print('\nperadores de conjustos:')
+s1 = {1,2,3}
+s2 = {4,2,5}
+
+s3 = s1 | s2 #o s3 tem junta o s1 e s2
+print(f'{s3=}')
+
+s3 = s1 & s2 #o s3 tem apenas os valores presentes em ambos
+print(f'{s3=}')
+
+s3 = s1-s2 #o s3 tem apenas os itens de s1 que não tem em s2
+print(f'{s3=}')
+
+s3 = s1
+
+s1 = {1,2,3,67}
+
+
