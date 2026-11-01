@@ -30,3 +30,5 @@ print(42, end='-fim do código-')
 #o python diferencia letras maiusculas e minusculas, logo, Print() != print()
 #logo, caso o comando seja escrito com a letra de forma errada, vai dar erro, como tentar escrevar Print()
 #Print("Hello World!") dá erro
+
+#testando

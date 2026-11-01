@@ -21,7 +21,7 @@ relogio = pygame.time.Clock()
 #cria cores que vão ser mais usadas
 branco = (255,255,255)
 preto = (20, 20, 25)
-verde = (70, 200, 120)
+verde = (70, 200, 120) 
 vermelho = (255,0,0)
 
 ativo = True
